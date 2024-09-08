@@ -1,0 +1,39 @@
+CREATE DATABASE fitness_planner;
+
+CREATE TABLE plans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    plan TEXT NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+SELECT * FROM `users`
+SELECT * FROM `plans`
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- Create the tracking table (optional)
+CREATE TABLE IF NOT EXISTS tracking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    workout_done VARCHAR(255) NOT NULL,
+    diet_followed VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+);
+SELECT * FROM `users`
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    contact VARCHAR(15) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    height INT NOT NULL,
+    weight INT NOT NULL
+);
+ALTER TABLE user ADD profile_pic VARCHAR(255);
+SELECT * FROM `user`
